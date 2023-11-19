@@ -1,0 +1,289 @@
+@import "variables";
+@import "mapas";
+@import "mixins";
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.menu {
+  @include borde;
+  width: $btnSize;
+  height: 110px;
+  margin: 0 15px;
+  position: absolute;
+  top: 100px;
+}
+
+.menu__btn-tema {
+  width: $btnSize;
+  height: $btnSize;
+  border: none;
+  border-radius: 10px;
+  background-color: #eee;
+  color: #444;
+  margin-bottom: 10px;
+
+  .fa-sun {
+    transform: scale(1.9);
+  }
+}
+
+.menu__btn-idioma {
+  width: $btnSize;
+  height: $btnSize;
+  border: none;
+  border-radius: 10px;
+  background-color: #777;
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.container {
+  height: 900px;
+  display: flex;
+  justify-content: center;
+}
+
+.container__historial {
+  width: 320px;
+  height: 630px;
+  margin: 30px 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  @include neo(10px, 15px);
+}
+
+.container__historial__bloque {
+  width: 270px;
+  padding: 20px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  @include neo(10px, 8px);
+  margin: 15px 0;
+}
+
+.container__historial__bloque__tiempo {
+  font-size: 16px;
+  color: #999;
+  display: flex;
+  font-size: 15px;
+  padding: 5px;
+
+  &__fecha,
+  &__hora {
+    margin: 0;
+    margin-right: 15px;
+  }
+}
+
+.container__historial__bloque__operacion {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 270px;
+
+  &__input {
+    text-wrap: nowrap;
+    max-width: 120px;
+    height: 20px;
+    font-size: 18px;
+    color: #777;
+    padding: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @include neo(10px, 5px);
+
+    &:hover {
+      transition: all 0.3s ease;
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+
+  &__igualdad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin: 0 15px;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    color: #1bf;
+    @include neo(10px, 4px);
+  }
+
+  &__output {
+    @extend .container__historial__bloque__operacion__input;
+  }
+}
+
+.container__avanzado {
+  width: 70px;
+  height: 430px;
+  margin: 230px 0;
+  padding: 20px;
+  background-color: #fff;
+  @include neo(10px, 15px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__btn {
+    @include btnBase();
+    margin: 22px 0;
+
+    &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  }
+}
+
+.container__calculadora {
+  width: 350px;
+  height: 630px;
+  margin: 30px 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  @include neo(10px, 15px);
+}
+
+.container__calculadora__section-pantalla {
+  background-color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  height: 130px;
+  width: 350px;
+
+  /* Seccion donde se pone lo que escribes con los botones y el resultado */
+  &__output {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+
+    &__seccion {
+      max-width: 100%;
+      overflow-x: scroll;
+    }
+  }
+}
+
+.valores__pantalla {
+  @include valorPantalla(42px, #555);
+  height: 42px;
+  transition: 0.2s ease all;
+  border: none;
+  outline: none;
+  height: 42px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.resultado__pantalla {
+  @include valorPantalla(24px, #ccc);
+  height: 24px;
+}
+
+.container__calculadora__section-opcions {
+  background-color: #fff;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-bottom: solid #eee 2px;
+  margin-top: 5px;
+}
+
+.container__calculadora__section-opcions__btn {
+  width: 120px;
+  height: 40px;
+  font-size: 18px;
+  color: #ccc;
+  background-color: #fff;
+  border: none;
+  text-decoration: none;
+  @include flex(row, center, center);
+  border-radius: 10px;
+  border: 1px solid #fff;
+
+  &:hover {
+    border-color: #ccc;
+    color: #aaa;
+  }
+
+  &__p {
+    margin-left: 8px;
+  }
+}
+
+.btn-pantalla {
+  width: 40px;
+  height: 40px;
+  margin-right: 60px;
+}
+
+.container__calculadora__section-botones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  align-items: center;
+  justify-items: center;
+  height: 400px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.container__calculadora__section-botones__btn {
+  @include btnBase($colorBtn);
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+
+  &:last-child {
+    background-color: $colorBtn;
+    color: #fff;
+  }
+
+  &:first-child {
+    background-color: #ff7a12;
+    color: #fff;
+  }
+}
+
+.btn-porcentaje,
+.btn-division,
+.btn-multiplicacion,
+.btn-resta,
+.btn-suma {
+  background-color: #555;
+  color: #fff;
+}
+
+.btn-signo {
+  background-color: #555;
+  color: #fff;
+}
+
+.btn-punto {
+  color: #ff7a12;
+}
