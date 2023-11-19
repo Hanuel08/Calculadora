@@ -581,7 +581,7 @@ class Calculadora {
 let Calculadora1 = new Calculadora();
 
 (() => {
-  console.log(Math);
+  console.log("Hola, soy Math", Math);
 })();
 
 (() => {
