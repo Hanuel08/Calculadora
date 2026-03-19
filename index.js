@@ -1,5 +1,7 @@
 "use strict";
 
+console.info(location);
+
 class Calculadora {
   constructor() {
     this.output = {
@@ -74,10 +76,16 @@ class Calculadora {
     };
     const date = new Date();
 
-    const localeTimeString = date.toLocaleTimeString();
+
+    const localeTimeString = date.toLocaleTimeString('en-US');
+    console.info('date', new Date)
+    console.info(date.getTimezoneOffset())
+    
+    console.info("localeTimeString", localeTimeString);
     const year = /^\d{2}(\d{2})$/.exec(date.getFullYear());
     const time = /^(\d{1,2}):(\d{2})/.exec(localeTimeString);
-    const meridian = /.+? (\w)\.\sm\./.exec(localeTimeString);
+    const meridian = /.+? (\w)m/i.exec(localeTimeString);
+    console.info(meridian)
 
     return {
       year: year[1],
@@ -85,7 +93,7 @@ class Calculadora {
       day: date.getDay() + 1,
       hour: time[1],
       minutes: time[2],
-      meridian: `${meridian[1]}m`,
+      meridian: `${meridian[1].toLocaleLowerCase()}m`,
     };
   }
 

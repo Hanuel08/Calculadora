@@ -1,4 +1,6 @@
 # Calculadora
 
-Esta calculadora debe de tener varios requisitos para funcionar
+Calculadora javascript sin terminar.
+
+![Calculadora](/img/calculadora.png)
 
